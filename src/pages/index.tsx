@@ -1,22 +1,17 @@
-// pages/index.tsx
 import { useState, useEffect } from "react";
 import { fetchBooks } from "../utils/api";
 import BookCard from "../components/BookCard";
 import styles from "../styles/HomePage.module.scss";
 
 const HomePage = () => {
-  // Initialize query state from local storage
-  const [query, setQuery] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("bookSearchQuery") || "";
-    }
-    return "";
-  });
-
+  const [query, setQuery] = useState(() =>
+    typeof window !== "undefined"
+      ? localStorage.getItem("bookSearchQuery") || ""
+      : ""
+  );
   const [books, setBooks] = useState<any[]>([]);
 
   useEffect(() => {
-    // Save query to local storage whenever it changes
     if (typeof window !== "undefined") {
       localStorage.setItem("bookSearchQuery", query);
     }

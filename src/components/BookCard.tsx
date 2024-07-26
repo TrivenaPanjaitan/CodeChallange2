@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Book } from "../types/book";
 import FavoriteButton from "./FavoriteButton";
-import styles from "../styles/BookCard.module.scss"; // Adjust the path if necessary
+import styles from "../styles/BookCard.module.scss";
 
 interface BookCardProps {
   book: Book;
@@ -20,8 +20,8 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
         alt={volumeInfo.title}
         className={styles.image}
       />
-      <Link href={`/book/${book.id}`} className={styles.link}>
-        More Info
+      <Link href={`/book/${book.id}`}>
+        <p className={styles.link}>More Info</p>
       </Link>
       <div className={styles.favoriteButton}>
         <FavoriteButton bookId={book.id} />
