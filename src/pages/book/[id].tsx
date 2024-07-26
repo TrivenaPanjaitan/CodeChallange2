@@ -69,7 +69,9 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
 export default BookDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ids = await fetchBookByIds(); // Function to fetch all book IDs
+  const books = await fetchBookByIds(); // Function to fetch all book IDs
+  const ids = (books || []).map((book: any) => book.id);
+
   const paths = ids.map((id: string) => ({ params: { id } }));
 
   return { paths, fallback: "blocking" }; // Adjust fallback as needed
