@@ -1,4 +1,8 @@
-import { GetServerSideProps } from "next";
+import {
+  // GetServerSideProps,
+  GetStaticPaths,
+  GetStaticProps,
+} from "next";
 import { fetchBookById } from "../../utils/api";
 import { Book } from "../../types/book";
 import FavoriteButton from "../../components/FavoriteButton";
@@ -9,6 +13,10 @@ interface BookDetailProps {
 }
 
 const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
+  if (!book || !book.volumeInfo) {
+    return <p>Book not found or loading...</p>; // Provide feedback if data is missing
+  }
+
   const { volumeInfo } = book;
 
   return (
@@ -62,9 +70,27 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const { id } = context.params!;
+//   const book = await fetchBookById(id as string);
+//   return { props: { book } };
+// };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [], // No pre-rendered paths
+    fallback: true, // Enable on-demand generation
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params!;
   const book = await fetchBookById(id as string);
+
+  if (!book) {
+    return { notFound: true };
+  }
+
   return { props: { book } };
 };
 
