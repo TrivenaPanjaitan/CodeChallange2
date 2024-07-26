@@ -12,6 +12,8 @@ const HomePage = () => {
   });
 
   const [books, setBooks] = useState<any[]>([]);
+  const [filter, setFilter] = useState<string>("ebooks");
+  const [sort, setSort] = useState<string>("relevance");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -22,7 +24,7 @@ const HomePage = () => {
   const searchBooks = async () => {
     if (query) {
       try {
-        const data = await fetchBooks(query);
+        const data = await fetchBooks(query, filter, sort);
         setBooks(data || []);
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -44,6 +46,15 @@ const HomePage = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button onClick={searchBooks}>Search</button>
+        <select onChange={(e) => setFilter(e.target.value)} value={filter}>
+          <option value="ebooks">All eBooks</option>
+          <option value="free-ebooks">Free eBooks</option>
+          <option value="paid-ebooks">Paid eBooks</option>
+        </select>
+        <select onChange={(e) => setSort(e.target.value)} value={sort}>
+          <option value="relevance">Relevance</option>
+          <option value="newest">Newest</option>
+        </select>
       </div>
       <div className={styles.bookGrid}>
         {(books || []).map((book) => (

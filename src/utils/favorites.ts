@@ -1,19 +1,23 @@
 // utils/favorites.ts
-export const getFavorites = (): any => {
-  try {
-    const favorites = localStorage.getItem("favorites");
-    console.log("Retrieved favorites:", favorites);
-    if (favorites) {
-      // Attempt to parse JSON
-      return favorites;
-    }
-    return "";
-  } catch (error) {
-    console.error("Failed to parse favorites from localStorage:", error);
-    // Clear invalid data and return an empty array
-    localStorage.removeItem("favorites");
-    return "";
-  }
+// export const getFavorites = (): any => {
+//   try {
+//     const favorites = localStorage.getItem("favorites");
+//     console.log("Retrieved favorites:", favorites);
+//     if (favorites) {
+//       // Attempt to parse JSON
+//       return favorites;
+//     }
+//     return "";
+//   } catch (error) {
+//     console.error("Failed to parse favorites from localStorage:", error);
+//     // Clear invalid data and return an empty array
+//     localStorage.removeItem("favorites");
+//     return "";
+//   }
+// };
+
+export const getFavorites = () => {
+  return localStorage.getItem("favorites")?.split(",") || [];
 };
 
 export const addFavorite = (bookId: string) => {
