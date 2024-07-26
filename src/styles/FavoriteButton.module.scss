@@ -1,0 +1,29 @@
+// FavoriteButton.module.scss
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &.favorite {
+    background-color: #f56565; // Red
+  }
+
+  &.notFavorite {
+    background-color: #a0aec0; // Gray
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

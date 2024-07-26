@@ -1,0 +1,33 @@
+// Header.module.scss
+
+.header {
+  background-color: #2d3748; // Dark gray
+  color: #fff;
+  padding: 5px 0;
+  margin-bottom: 50px;
+}
+
+.navContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Two columns with equal width
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.navItem {
+  text-align: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #4a5568; // Lighter gray
+  }
+}
