@@ -1,9 +1,5 @@
-import {
-  // GetServerSideProps,
-  GetStaticPaths,
-  GetStaticProps,
-} from "next";
-import { fetchBookById } from "../../utils/api";
+import { GetServerSideProps } from "next";
+import { fetchBookById, fetchBooks } from "../../utils/api";
 import { Book } from "../../types/book";
 import FavoriteButton from "../../components/FavoriteButton";
 import styles from "../../styles/BookDetail.module.scss"; // Sesuaikan jalurnya jika diperlukan
@@ -70,28 +66,8 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const { id } = context.params!;
-//   const book = await fetchBookById(id as string);
-//   return { props: { book } };
-// };
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [], // No pre-rendered paths
-    fallback: true, // Enable on-demand generation
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params!;
   const book = await fetchBookById(id as string);
-
-  if (!book) {
-    return { notFound: true };
-  }
-
   return { props: { book } };
 };
-
-export default BookDetail;
