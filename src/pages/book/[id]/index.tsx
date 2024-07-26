@@ -1,8 +1,8 @@
 import { GetServerSideProps } from "next";
-import { fetchBookById } from "../../utils/api";
-import { Book } from "../../types/book";
-import FavoriteButton from "../../components/FavoriteButton";
-import styles from "../../styles/BookDetail.module.scss"; // Adjust the path if needed
+import { fetchBookById } from "../../../utils/api";
+import { Book } from "../../../types/book";
+import FavoriteButton from "../../../components/FavoriteButton";
+import styles from "../../../styles/BookDetail.module.scss"; // Adjust the path if needed
 
 interface BookDetailProps {
   book: Book;
