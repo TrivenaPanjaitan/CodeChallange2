@@ -69,20 +69,20 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
 export default BookDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const books = await fetchBookByIds(); // Function to fetch all book IDs
-  // const ids = (books || []).map((book: any) => book.id);
-  const ids = [
+  const books = await fetchBookByIds(); // Function to fetch all book IDs
+  const idsTemp = [
     "1bm0DwAAQBAJ",
     "liCEDwAAQBAJ",
     "1sA8DwAAQBAJ",
     "3mxCDwAAQBAJ",
     "Qsg8DwAAQBAJ",
   ];
+  const ids = books.map((book: any) => book.id) || idsTemp;
 
   // const paths = ids.map((id: string) => ({ params: { id } }));
   const paths = ids.map((id: string) => ({ params: { id } }));
 
-  return { paths, fallback: "blocking" }; // Adjust fallback as needed
+  return { paths, fallback: false }; // Adjust fallback as needed
 };
 
 export const getStaticProps: GetStaticProps<BookDetailProps> = async (
