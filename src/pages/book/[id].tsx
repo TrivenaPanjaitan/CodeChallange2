@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { fetchBookById, fetchBookByIds } from "../../utils/api";
 import { Book } from "../../types/book";
 import FavoriteButton from "../../components/FavoriteButton";
-import styles from "../../../styles/BookDetail.module.scss"; // Adjust the path if needed
+import styles from "../../styles/BookDetail.module.scss"; // Adjust the path if needed
 
 interface BookDetailProps {
   book: Book;
