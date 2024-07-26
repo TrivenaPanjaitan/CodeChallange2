@@ -90,5 +90,10 @@ export const getStaticProps: GetStaticProps<BookDetailProps> = async (
 ) => {
   const { id } = context.params!;
   const book = await fetchBookById(id as string);
-  return { props: { book }, revalidate: 10 }; // Adjust revalidation time as needed
+  return {
+    props: {
+      book,
+    },
+    // revalidate: 10
+  }; // Adjust revalidation time as needed
 };
