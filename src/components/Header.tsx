@@ -4,11 +4,11 @@ import styles from "../styles/Header.module.scss"; // Adjust the path if necessa
 const Header: React.FC = () => (
   <header className={styles.header}>
     <nav className={styles.navContainer}>
-      <Link href="/" as={`/`} className={styles.navLink}>
-        <a className={styles.navItem}>Home</a>
+      <Link href="/" className={styles.navLink}>
+        Home
       </Link>
-      <Link href="/favorites" as={`/favorites`} className={styles.navLink}>
-        <a className={styles.navItem}>Favorites</a>
+      <Link href="/favorites" className={styles.navLink}>
+        Favorites
       </Link>
     </nav>
   </header>
