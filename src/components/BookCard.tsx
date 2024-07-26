@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { Book } from "../types/book";
 import FavoriteButton from "./FavoriteButton";
 import styles from "../styles/BookCard.module.scss";
@@ -9,7 +9,12 @@ interface BookCardProps {
 }
 
 const BookCard: React.FC<BookCardProps> = ({ book }) => {
+  const router = useRouter();
   const { volumeInfo } = book;
+
+  const handleClick = () => {
+    router.push(`/book?id=${book.id}`);
+  };
 
   return (
     <div className={styles.card}>
@@ -20,9 +25,9 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
         alt={volumeInfo.title}
         className={styles.image}
       />
-      <Link href={`/book/${book.id}`}>
-        <span className={styles.link}>More Info</span>
-      </Link>
+      <button onClick={handleClick} className={styles.link}>
+        More Info
+      </button>
       <div className={styles.favoriteButton}>
         <FavoriteButton bookId={book.id} />
       </div>
