@@ -72,6 +72,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = ids.map((id: string) => ({ params: { id } }));
 
+  console.log(paths);
+
   return { paths, fallback: false };
 };
 
@@ -80,6 +82,7 @@ export const getStaticProps: GetStaticProps<BookDetailProps> = async (
 ) => {
   const { id } = context.params!;
   const book = await fetchBookById(id as string);
+  console.log(book);
   return { props: { book } };
 };
 
