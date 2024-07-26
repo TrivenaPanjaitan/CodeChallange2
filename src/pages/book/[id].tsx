@@ -1,7 +1,7 @@
-import { GetServerSideProps } from "next";
-import { fetchBookById } from "../../../utils/api";
-import { Book } from "../../../types/book";
-import FavoriteButton from "../../../components/FavoriteButton";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { fetchBookById, fetchBookByIds } from "../../utils/api";
+import { Book } from "../../types/book";
+import FavoriteButton from "../../components/FavoriteButton";
 import styles from "../../../styles/BookDetail.module.scss"; // Adjust the path if needed
 
 interface BookDetailProps {
@@ -68,8 +68,23 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
 
 export default BookDetail;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const { id } = context.params!;
+//   const book = await fetchBookById(id as string);
+//   return { props: { book } };
+// };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const ids = await fetchBookByIds(); // Function to fetch all book IDs
+  const paths = ids.map((id: string) => ({ params: { id } }));
+
+  return { paths, fallback: "blocking" }; // Adjust fallback as needed
+};
+
+export const getStaticProps: GetStaticProps<BookDetailProps> = async (
+  context
+) => {
   const { id } = context.params!;
   const book = await fetchBookById(id as string);
-  return { props: { book } };
+  return { props: { book }, revalidate: 10 }; // Adjust revalidation time as needed
 };
