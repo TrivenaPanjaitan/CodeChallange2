@@ -46,15 +46,17 @@ const HomePage = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button onClick={searchBooks}>Search</button>
-        <select onChange={(e) => setFilter(e.target.value)} value={filter}>
-          <option value="ebooks">All eBooks</option>
-          <option value="free-ebooks">Free eBooks</option>
-          <option value="paid-ebooks">Paid eBooks</option>
-        </select>
-        <select onChange={(e) => setSort(e.target.value)} value={sort}>
-          <option value="relevance">Relevance</option>
-          <option value="newest">Newest</option>
-        </select>
+        <div className={styles.filters}>
+          <select onChange={(e) => setFilter(e.target.value)} value={filter}>
+            <option value="ebooks">All eBooks</option>
+            <option value="free-ebooks">Free eBooks</option>
+            <option value="paid-ebooks">Paid eBooks</option>
+          </select>
+          <select onChange={(e) => setSort(e.target.value)} value={sort}>
+            <option value="relevance">Relevance</option>
+            <option value="newest">Newest</option>
+          </select>
+        </div>
       </div>
       <div className={styles.bookGrid}>
         {(books || []).map((book) => (
