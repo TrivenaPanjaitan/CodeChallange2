@@ -68,12 +68,6 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
 
 export default BookDetail;
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const { id } = context.params!;
-//   const book = await fetchBookById(id as string);
-//   return { props: { book } };
-// };
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const ids = await fetchBookByIds(); // Function to fetch all book IDs
   const paths = ids.map((id: string) => ({ params: { id } }));
