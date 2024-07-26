@@ -21,7 +21,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
         className={styles.image}
       />
       <Link href={`/book/${book.id}`}>
-        <p className={styles.link}>More Info</p>
+        <span className={styles.link}>More Info</span>
       </Link>
       <div className={styles.favoriteButton}>
         <FavoriteButton bookId={book.id} />

@@ -1,14 +1,15 @@
+import React from "react";
 import Link from "next/link";
 import styles from "../styles/Header.module.scss";
 
 const Header: React.FC = () => (
   <header className={styles.header}>
     <nav className={styles.navContainer}>
-      <Link href="/">
-        <p className={styles.navItem}>Home</p>
+      <Link href="/" className={styles.navLink}>
+        <span className={styles.navItem}>Home</span>
       </Link>
-      <Link href="/favorites">
-        <p className={styles.navItem}>Favorites</p>
+      <Link href="/favorites" className={styles.navLink}>
+        <span className={styles.navItem}>Favorites</span>
       </Link>
     </nav>
   </header>

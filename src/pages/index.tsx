@@ -4,11 +4,13 @@ import BookCard from "../components/BookCard";
 import styles from "../styles/HomePage.module.scss";
 
 const HomePage = () => {
-  const [query, setQuery] = useState(() =>
-    typeof window !== "undefined"
-      ? localStorage.getItem("bookSearchQuery") || ""
-      : ""
-  );
+  const [query, setQuery] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("bookSearchQuery") || "";
+    }
+    return "";
+  });
+
   const [books, setBooks] = useState<any[]>([]);
 
   useEffect(() => {
