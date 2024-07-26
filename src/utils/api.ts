@@ -15,7 +15,7 @@ export const fetchBookById = async (id: string) => {
 
 export const fetchBookByIds = async () => {
   if (typeof window !== "undefined") {
-    const query = localStorage.getItem("bookSearchQuery") || "";
+    const query = localStorage.getItem("bookSearchQuery") || "*";
     if (query) {
       const response = await axios.get(
         `${API_URL}?q=${query}&key=${API_TOKEN}`
