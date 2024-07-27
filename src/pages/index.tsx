@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { fetchBooks } from "../utils/api";
+import React, { useEffect, useState } from "react";
 import BookCard from "../components/BookCard";
 import styles from "../styles/HomePage.module.scss";
+import { fetchBooks } from "../utils/api";
 
 const HomePage = () => {
   const [query, setQuery] = useState(() => {

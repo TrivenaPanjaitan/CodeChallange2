@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/FavoriteButton.module.scss"; // Adjust the path if necessary
 
 interface FavoriteButtonProps {
