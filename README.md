@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Book Search App
 
-## Getting Started
+## Overview
 
-First, run the development server:
+The Book Search App is a web application built with Next.js, React, and TypeScript that allows users to search for books, view book details, manage their favorite books, and more. It includes features like filtering, pagination, sorting, authentication, and localization.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+https://trivenapanjaitan.github.io/CodeChallange2/
+
+![search page](image.png)
+![favorite page](image-1.png)
+![detail page](image-2.png)
+
+## Features
+
+- **Book Search**: Search for books based on various criteria.
+- **Book Details**: View detailed information about each book.
+- **Favorites Management**: Save and manage favorite books.
+- **Filtering**: Filter books based on criteria such as availability (e.g., free or paid eBooks).
+- **Pagination**: Efficiently handle large sets of search results with pagination.
+- **Sorting**: Sort search results by relevance or publication date.
+- **Authentication** (Optional): Sign in/sign up to save favorite books across sessions.
+- **Localization** (Optional): Support multiple languages for the interface.
+
+## Technologies
+
+- **Frontend**: Next.js, React, TypeScript
+- **Styling**: Tailwind CSS, SCSS
+- **API**: Google Books API
+- **Testing**: Jest, React Testing Library
+
+## File Structure
+
+```plaintext
+/.
+├── public/
+│   └── assets/
+│       └── images/
+├── src/
+│   ├── components/
+│   │   ├── BookCard.tsx
+│   │   ├── FavoriteButton.tsx
+│   │   ├── Header.tsx
+│   │   └── Layout.tsx
+│   ├── pages/
+│   │   ├── _app.tsx
+│   │   ├── index.tsx
+│   │   ├── book.tsx
+│   │   └── favorites.tsx
+│   ├── styles/
+│   │   ├── BookCard.module.scss
+│   │   ├── BookDetail.module.scss
+│   │   ├── FavoriteButton.module.scss
+│   │   ├── Header.module.scss
+│   │   └── HomePage.module.scss
+│   └── utils/
+│       ├── api.ts
+│       └── favorites.ts
+│   └── types/
+│       └── book.ts
+├── .eslintrc.json
+├── .gitignore
+├── next.config.mjs
+├── package.json
+├── postcss.config.js
+├── tsconfig.json
+└── tailwind.config.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository:**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/TrivenaPanjaitan/CodeChallange2.git
+   cd CodeChallange2
+   ```
 
-## Learn More
+2. **Install dependencies:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Set up environment variables:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   Create a `.env.local` file in the root directory and add your Google Books API key:
 
-## Deploy on Vercel
+   ```plaintext
+   GOOGLE_BOOKS_API_KEY=yourAPIKey
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run the development server:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   npm run dev
+   ```
+
+   Open your browser and navigate to `http://localhost:3000` to view the application.
+
+5. **Build and deploy:**
+
+   To build the project for production:
+
+   ```bash
+   npm run build
+   ```
+
+   To export the static site and deploy to GitHub Pages:
+
+   ```bash
+   npm run deploy
+   ```
+
+## Unit Testing
+
+To run unit tests:
+
+```bash
+npm test
+```
+
+## Optional Features
+
+- **Authentication**: Implement user authentication to manage favorite books across sessions.
+- **Localization**: Add support for multiple languages.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Feel free to adjust the content based on any additional details or specific instructions for your project.
