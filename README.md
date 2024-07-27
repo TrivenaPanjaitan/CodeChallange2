@@ -9,6 +9,7 @@ https://trivenapanjaitan.github.io/CodeChallange2/
 ![search page](image.png)
 ![favorite page](image-1.png)
 ![detail page](image-2.png)
+![unit test](image-3.png)
 
 ## Features
 
